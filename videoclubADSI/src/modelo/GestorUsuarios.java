@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GestorUsuarios {
 
@@ -18,4 +19,36 @@ public class GestorUsuarios {
 		
 		return miGestorUsuarios;
 	}
+	
+	private Iterator<Usuario> getItr(){
+		return lista.iterator();
+	}
+	public Usuario iniciarSesion(String pMail, String pContraseña) {
+		Iterator<Usuario> itr = getItr();
+		boolean encontrado = false;
+		Usuario unUsuario = null;
+		while (itr.hasNext() || encontrado){
+			unUsuario = itr.next();
+			encontrado = unUsuario.coincide(pMail, pContraseña);
+		}
+		if (encontrado == false) {
+			unUsuario = null;
+		}
+		return unUsuario;
+	}
+	
+	public Usuario buscarUsuarioPorMail(String pMail) {
+		Iterator<Usuario> itr = getItr();
+		boolean encontrado = false;
+		Usuario unUsuario = null;
+		while (itr.hasNext() || encontrado){
+			unUsuario = itr.next();
+			encontrado = unUsuario.getMail().equals(pMail);
+		}
+		if (encontrado == false) {
+			unUsuario = null;
+		}
+		return unUsuario;
+	}
+	
 }

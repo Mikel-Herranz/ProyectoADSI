@@ -8,10 +8,6 @@ public class Alquiler {
 	private Pelicula que;
     private Date cuando;
 	
-	
-	
-	
-	
 	public Alquiler(Usuario quienLaAlquila,Pelicula queAlquila, Date fecha ) {
 
 		this.quien=quienLaAlquila;

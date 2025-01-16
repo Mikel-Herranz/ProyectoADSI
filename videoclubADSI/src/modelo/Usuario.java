@@ -36,6 +36,20 @@ public class Usuario {
 	public void hacerAdmin() {
 		this.admin = true;
 	}
+	
+	public boolean coincide(String pMail, String pContraseña) {
+		 boolean coincide = false;
+		 if (pMail == this.mail) {
+			 if (pContraseña == this.contraseña) {
+				 coincide = true;
+			 }
+		 } 
+		 return coincide;
+	 }
 
+	public String getMail() {
+		return this.mail;
+	}
+	
 	
 }
