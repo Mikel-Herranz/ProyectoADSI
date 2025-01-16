@@ -16,6 +16,7 @@ public class Resena {
 		this.que=queResena;
 		this.punt = punt;
 		this.comentario = comentario;
+		
 	}
 	
 	
