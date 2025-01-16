@@ -22,7 +22,7 @@ public class Videoclub {
         //this.gestorRes=gestorRes.getGestorResenas();
         //this.gestorUs=gestorUs.getGestorUsuarios();
         //this.gestorAlq=gestorAlq.getGestorAlquileres();
-
+    	//hjh
 
     }
 	
