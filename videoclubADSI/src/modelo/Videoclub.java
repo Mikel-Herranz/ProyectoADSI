@@ -35,6 +35,7 @@ public class Videoclub {
 			System.out.println("usuario ya existente");
 		}
 		else {
+			GSolicitudesReg.getGSolicitudReg().insertarSolicitud(pContraseña, pNombre, pApellido, pMail, pTelefono, pFechaNacimiento);
 			System.out.println("se ha enviado una solicitud de registro, pronto sera verificada");
 		}
 			
