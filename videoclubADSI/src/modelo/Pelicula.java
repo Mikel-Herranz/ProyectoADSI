@@ -4,7 +4,7 @@ import java.awt.Image;
 
 public class Pelicula {
     
-    private int codPelicula;
+    private Usuario aceptadaPor;
     private String desc;
     private Image trailer;
     private double puntMedia;
@@ -14,19 +14,18 @@ public class Pelicula {
     
     
     
-    public Pelicula(int codPelicula, String desc, Image trailer, double precioAlq, String titulo) {
+    public Pelicula(Usuario quien,int codPelicula, String desc, Image trailer, double precioAlq, String titulo) {
 
-		this.codPelicula = codPelicula;
+		
 		this.desc = desc;
 		this.trailer = trailer;
 		this.puntMedia = 0;
 		this.precioAlq = precioAlq;
 		this.titulo = titulo;
+        this.aceptadaPor = quien;
 	}
     
-    public void actualizarMedia () {
-    	
-    }
+    
     
     
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class GestorResenas {
 
 	
-	private static GestorResenas miGestorResenas = new n();
+	private static GestorResenas miGestorResenas = new GestorResenas();
 	private ArrayList<Resena> lista;
 	
 	
