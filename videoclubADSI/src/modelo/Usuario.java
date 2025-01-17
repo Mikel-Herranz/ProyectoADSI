@@ -50,6 +50,16 @@ public class Usuario {
 	public String getMail() {
 		return this.mail;
 	}
+
+	public void actualizarDatos(String pContraseña, String pNombre, String pApellido,  int pTelefono,
+			Date pFechaNacimiento) {
+		this.contraseña=pContraseña;
+		this.nombre=pNombre;
+		this.apellido=pApellido;
+		this.telefono=pTelefono;
+		this.fechaNacimiento=pFechaNacimiento;
+		
+	}
 	
 	
 }

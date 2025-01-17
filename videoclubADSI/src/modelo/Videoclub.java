@@ -46,7 +46,13 @@ public class Videoclub {
 	public void aceptarSolicitudReg(String pMail) {
 		GSolicitudesReg.getGSolicitudReg().aceptarSolicitud(pMail);
 	}
+	public void eliminarCuenta(String pMail) {
+		GestorUsuarios.getGestorUsuarios().eliminarUsuario(pMail);
+	}
 	
+	public void actualizarDatosUsurio(String pContraseña, String pNombre, String pApellido, String pMail, int pTelefono, Date pFechaNacimiento) {
+		GestorUsuarios.getGestorUsuarios().actualizarDatos(pContraseña,pNombre,pApellido,pMail,pTelefono,pFechaNacimiento);
+	}
 	
 	
 }

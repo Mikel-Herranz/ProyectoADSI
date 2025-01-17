@@ -56,5 +56,33 @@ public class GestorUsuarios {
 		lista.add(new Usuario(pContraseña,pNombre,pApellido,pMail,pTelefono,pFechaNacimiento));
 		
 	}
+	public void eliminarUsuario(String pMail) {
+		Iterator<Usuario> itr = getItr();
+		boolean encontrado = false;
+		Usuario unUsuario = null;
+		int pos=0;
+		while (itr.hasNext() || encontrado){
+			unUsuario = itr.next();
+			encontrado = unUsuario.getMail().equals(pMail);
+			if (encontrado==false) {
+				pos=pos++;
+			}
+		}
+		if (unUsuario != null) {
+			lista.remove(pos);
+		}
+		
+		
+	}
+	public void actualizarDatos(String pContraseña, String pNombre, String pApellido, String pMail, int pTelefono,
+			Date pFechaNacimiento) {
+		Usuario unUsuario= buscarUsuarioPorMail(pMail);
+		if (unUsuario != null) {
+			unUsuario.actualizarDatos(pContraseña,pNombre,pApellido,pTelefono,pFechaNacimiento);
+					
+					
+		}
+		
+	}
 	
 }
