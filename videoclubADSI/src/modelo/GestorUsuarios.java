@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 
 public class GestorUsuarios {
@@ -49,6 +50,11 @@ public class GestorUsuarios {
 			unUsuario = null;
 		}
 		return unUsuario;
+	}
+	public void anadirUsuario(String pContraseña, String pNombre, String pApellido, String pMail, int pTelefono,
+			Date pFechaNacimiento) {
+		lista.add(new Usuario(pContraseña,pNombre,pApellido,pMail,pTelefono,pFechaNacimiento));
+		
 	}
 	
 }

@@ -19,6 +19,25 @@ public class SolicitudReg {
 		this.telefono = telefono;
 		this.fechaNacimiento = fechaNacimiento;
 	}
+
+	public void obtenerInfo() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean esEsta(String pMail) {
+		boolean es=false;
+		if (pMail==this.mail) {
+			es=true;
+		}
+			
+		return es;
+	}
+
+	public void aceptar() {
+		GestorUsuarios.getGestorUsuarios().anadirUsuario(this.contraseña,this.nombre,this.apellido,this.mail,this.telefono,this.fechaNacimiento);
+		
+	}
 	
 	
 }

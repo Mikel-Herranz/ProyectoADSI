@@ -38,9 +38,14 @@ public class Videoclub {
 			GSolicitudesReg.getGSolicitudReg().insertarSolicitud(pContraseña, pNombre, pApellido, pMail, pTelefono, pFechaNacimiento);
 			System.out.println("se ha enviado una solicitud de registro, pronto sera verificada");
 		}
-			
 	}
-
+	public void mostrarSolicitudes() {
+		GSolicitudesReg.getGSolicitudReg().mostrarSolicitudes();
+	}
+	
+	public void aceptarSolicitudReg(String pMail) {
+		GSolicitudesReg.getGSolicitudReg().aceptarSolicitud(pMail);
+	}
 	
 	
 	
