@@ -59,6 +59,8 @@ public class GestorPeliculas {
 			
 	}
 
+	
+
 	public void mostrarUnaPelicula(String pTitulo) {
 		Pelicula unaPeli=obtenerPelicula(pTitulo);
 		unaPeli.obtenerInfo();

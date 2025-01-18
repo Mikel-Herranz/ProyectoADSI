@@ -83,5 +83,16 @@ public class Usuario {
 		
 			
 	}
+
+	public boolean estaEnSusAlquiladas(Pelicula unaPelicula) {
+		boolean esta=false;
+		esta=alquiladas.contains(unaPelicula);
+		return esta;
+	}
+
+	public void anadirAResenadas(Pelicula unaPelicula) {
+		this.reseñadas.add(unaPelicula);
+		
+	}
 	
 }

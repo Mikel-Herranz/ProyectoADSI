@@ -67,4 +67,31 @@ public class Videoclub {
 		GestorPeliculas.getGestorPeliculas().mostrarUnaPelicula(pTitulo);
 		
 	}
+	
+	public void resenarPelicula(String pMail,String pTitulo , String pComent , Double pPunt) {
+		boolean laTiene= false;
+		Pelicula unaPelicula =GestorPeliculas.getGestorPeliculas().obtenerPelicula(pTitulo);
+		laTiene=GestorUsuarios.getGestorUsuarios().comprobarSiLaTieneAlquilada(pMail,unaPelicula);
+		if(laTiene == true) {
+			Usuario unUsuario= GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
+			GestorUsuarios.getGestorUsuarios().resenarPeliPara(pMail,unaPelicula);
+			GestorResenas.getGestorResenas().crearResena(unUsuario,unaPelicula,pComent,pPunt);
+			
+		}
+		
+	}
+	public double verPuntPromedio(String pTitulo) {
+		Pelicula unaPelicula =GestorPeliculas.getGestorPeliculas().obtenerPelicula(pTitulo);
+		double punt =GestorResenas.getGestorResenas().obtenerPuntPromedio(unaPelicula);
+		return punt;
+	}
+	
+	public void obtenerPelisOrdenadasPorPunt() {
+		//todo
+	}
+	public void cambiarResena(String pMail,String pTitulo,String pComent ,double pPunt) {
+		Pelicula unaPelicula =GestorPeliculas.getGestorPeliculas().obtenerPelicula(pTitulo);
+		Usuario unUsuario= GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
+		GestorResenas.getGestorResenas().modificarResena(unaPelicula,unUsuario,pComent,pPunt);
+	}
 }

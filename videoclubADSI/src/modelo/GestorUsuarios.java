@@ -88,4 +88,19 @@ public class GestorUsuarios {
 		}
 		
 	}
+
+	public boolean comprobarSiLaTieneAlquilada(String pMail, Pelicula unaPelicula) {
+		boolean laTiene=false;
+		Usuario unUsuario=buscarUsuarioPorMail(pMail);
+		laTiene=unUsuario.estaEnSusAlquiladas(unaPelicula);
+		return laTiene;
+	}
+
+	public void resenarPeliPara(String pMail, Pelicula unaPelicula) {
+		Usuario unUsuario = buscarUsuarioPorMail(pMail);
+		if (unUsuario != null) {
+			unUsuario.anadirAResenadas(unaPelicula);
+		}
+		
+	}
 }
