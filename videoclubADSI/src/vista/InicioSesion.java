@@ -5,12 +5,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.Videoclub;
+
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextArea;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
@@ -22,6 +28,7 @@ public class InicioSesion extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtInserteMail;
 	private JTextField txtInserteContrasea;
+	private Controler controler = null;
 
 	/**
 	 * Launch the application.
@@ -86,11 +93,24 @@ public class InicioSesion extends JFrame {
 		lblNewLabel_1_1.setBounds(155, 84, 134, 14);
 		panel_1.add(lblNewLabel_1_1);
 		
-		JButton btnNewButton = new JButton("Iniciar Sesion");
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(0, 128, 192));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
-		panel.add(btnNewButton);
+		JButton btnIniciarSesion = new JButton("Iniciar Sesion");
+		btnIniciarSesion.setForeground(new Color(255, 255, 255));
+		btnIniciarSesion.setBackground(new Color(0, 128, 192));
+		btnIniciarSesion.setFont(new Font("Tahoma", Font.BOLD, 15));
+		panel.add(btnIniciarSesion);
+	}
+	private Controler getControler() {
+		if (controler == null) {
+			controler = new Controler();
+		}
+		return controler;
+	}
+
+	private class Controler implements ActionListener {
+	
+		public void actionPerformed(ActionEvent e) {
+			Videoclub.getVideoclub().iniciarSesion(txtInserteMail.getText(), txtInserteContrasea.getText());
+		}
 	}
 
 }
