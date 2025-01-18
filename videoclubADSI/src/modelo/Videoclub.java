@@ -7,12 +7,6 @@ public class Videoclub {
     private static Videoclub miVideoclub = new Videoclub();
     
     private Videoclub(){
-        
-        //this.gestorPelis=gestorPelis.getgestorPeliculas();
-        //this.gestorProp=gestorProp.getGestorPropuestas();
-        //this.gestorRes=gestorRes.getGestorResenas();
-        //this.gestorUs=gestorUs.getGestorUsuarios();
-        //this.gestorAlq=gestorAlq.getGestorAlquileres();
     }
 	public static Videoclub getVideoclub(){
         return miVideoclub;
