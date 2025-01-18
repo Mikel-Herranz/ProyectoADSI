@@ -41,11 +41,5 @@ public class Alquiler {
     }
 
     // Métodos para añadir y eliminar alquileres en el gestor
-    public void añadirAlquiler() {
-        GestorAlquileres.getGestorAlquileres().añadirAlquiler(this);
-    }
-
-    public void eliminarAlquiler() {
-        GestorAlquileres.getGestorAlquileres().eliminarAlquiler(this);
-    }
+    
 }

@@ -27,4 +27,35 @@ public class GestorPeliculas {
     public void eliminarPelicula(Pelicula pelicula) {
         lista.remove(pelicula);
     }
+
+	
+
+	public void mostrarPeliculas() {
+		Pelicula unaPeli = null;
+		Iterator<Pelicula> itr = getItr();
+		
+		while (itr.hasNext()) {
+			unaPeli = itr.next();
+			unaPeli.obtenerInfo();
+			
+		}
+		
+	}
+
+	public Pelicula obtenerPelicula(String pTitulo) {
+		Pelicula unaPeli = null;
+		Iterator<Pelicula> itr = getItr();
+		boolean encontrado = false;
+		
+		while (itr.hasNext() || encontrado) {
+			unaPeli = itr.next();
+			encontrado=unaPeli.esEsta(pTitulo);
+			
+		}
+		if (encontrado==false) {
+			unaPeli=null;
+		}
+		return unaPeli;
+			
+	}
 }

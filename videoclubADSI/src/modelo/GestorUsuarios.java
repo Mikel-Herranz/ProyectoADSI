@@ -70,7 +70,9 @@ public class GestorUsuarios {
             lista.remove(pos);
         }
     }
-
+    
+    
+    
     public void actualizarDatos(String pContraseña, String pNombre, String pApellido, String pMail, int pTelefono,
                                 Date pFechaNacimiento) {
         Usuario unUsuario = buscarUsuarioPorMail(pMail);
@@ -78,4 +80,12 @@ public class GestorUsuarios {
             unUsuario.actualizarDatos(pContraseña, pNombre, pApellido, pTelefono, pFechaNacimiento);
         }
     }
+
+	public void alquilarPeliPara(String pMail,Pelicula pPeli) {
+		Usuario unUsuario = buscarUsuarioPorMail(pMail);
+		if (unUsuario != null) {
+			unUsuario.anadirAAlquiladas(pPeli);
+		}
+		
+	}
 }

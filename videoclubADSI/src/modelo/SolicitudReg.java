@@ -21,7 +21,7 @@ public class SolicitudReg {
 	}
 
 	public void obtenerInfo() {
-		// TODO Auto-generated method stub
+		//Devolver json
 		
 	}
 

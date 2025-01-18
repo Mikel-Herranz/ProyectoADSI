@@ -1,6 +1,7 @@
 package modelo;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 
 public class Usuario {
@@ -60,6 +61,27 @@ public class Usuario {
 		this.fechaNacimiento=pFechaNacimiento;
 		
 	}
+
+	public void anadirAAlquiladas(Pelicula pPeli) {
+		this.alquiladas.add(pPeli);
+		
+	}
 	
+	 
+	
+	public void eliminarDeAlquiladas(Pelicula pPeli) {
+		int j=-1;
+		boolean encontrada=false;
+		while(!encontrada) {
+			j=j+1;
+			if(alquiladas.get(j).equals(pPeli)) {
+				encontrada=true;
+				alquiladas.remove(j);
+			}
+			
+		}
+		
+			
+	}
 	
 }

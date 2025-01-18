@@ -53,6 +53,14 @@ public class Videoclub {
 	public void actualizarDatosUsurio(String pContraseña, String pNombre, String pApellido, String pMail, int pTelefono, Date pFechaNacimiento) {
 		GestorUsuarios.getGestorUsuarios().actualizarDatos(pContraseña,pNombre,pApellido,pMail,pTelefono,pFechaNacimiento);
 	}
+	public void mostrarPeliculas() {
+		GestorPeliculas.getGestorPeliculas().mostrarPeliculas();
+	}
 	
-	
+	public void alquilarPelicula(String pMail, String pTitulo) {
+		Pelicula unaPelicula =GestorPeliculas.getGestorPeliculas().obtenerPelicula(pTitulo);
+		GestorUsuarios.getGestorUsuarios().alquilarPeliPara(pMail,unaPelicula);
+		Usuario unUsuario= GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
+		GestorAlquileres.getGestorAlquileres().crearAlquiler(unUsuario,unaPelicula);
+	}
 }
