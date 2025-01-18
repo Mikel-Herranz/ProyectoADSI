@@ -63,4 +63,8 @@ public class Videoclub {
 		Usuario unUsuario= GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
 		GestorAlquileres.getGestorAlquileres().crearAlquiler(unUsuario,unaPelicula);
 	}
+	public void buscarPelicula(String pTitulo) {
+		GestorPeliculas.getGestorPeliculas().mostrarUnaPelicula(pTitulo);
+		
+	}
 }
