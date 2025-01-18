@@ -67,16 +67,24 @@ public class InicioSesion extends JFrame {
 		txtInserteMail = new JTextField();
 		txtInserteMail.setBounds(299, 23, 233, 23);
 		panel_1.add(txtInserteMail);
-		txtInserteMail.setText("Inserte Mail");
-		txtInserteMail.setFont(new Font("Tahoma", Font.ITALIC, 14));
+		txtInserteMail.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtInserteMail.setColumns(10);
 		
 		txtInserteContrasea = new JTextField();
 		txtInserteContrasea.setBounds(299, 78, 233, 23);
 		panel_1.add(txtInserteContrasea);
-		txtInserteContrasea.setFont(new Font("Tahoma", Font.ITALIC, 14));
-		txtInserteContrasea.setText("Inserte Contraseña");
+		txtInserteContrasea.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtInserteContrasea.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("Correo electronico:");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_1.setBounds(155, 29, 134, 14);
+		panel_1.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Contraseña:");
+		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_1_1.setBounds(155, 84, 134, 14);
+		panel_1.add(lblNewLabel_1_1);
 		
 		JButton btnNewButton = new JButton("Iniciar Sesion");
 		btnNewButton.setForeground(new Color(255, 255, 255));

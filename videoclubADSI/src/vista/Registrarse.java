@@ -57,33 +57,33 @@ public class Registrarse extends JFrame {
 		panel.setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(331, 114, 96, 20);
+		textField.setBounds(331, 114, 192, 20);
 		panel.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(331, 193, 96, 20);
+		textField_1.setBounds(331, 193, 192, 20);
 		panel.add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(331, 291, 96, 20);
+		textField_2.setBounds(331, 291, 192, 20);
 		panel.add(textField_2);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(331, 370, 96, 20);
+		textField_3.setBounds(331, 370, 192, 20);
 		panel.add(textField_3);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(331, 462, 96, 20);
+		textField_4.setBounds(331, 462, 192, 20);
 		panel.add(textField_4);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(331, 564, 96, 20);
+		textField_5.setBounds(331, 564, 192, 20);
 		panel.add(textField_5);
 		
 		JButton btnNewButton = new JButton("Solicitar Registro");
