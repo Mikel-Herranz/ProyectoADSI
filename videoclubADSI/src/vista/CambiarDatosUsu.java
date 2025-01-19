@@ -137,7 +137,9 @@ public class CambiarDatosUsu extends JFrame implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		
+		this.dispose();
+		InterfazPelis frame = new InterfazPelis(Videoclub.getVideoclub(), (String[])arg , usuario);
+		frame.setVisible(true);
 		
 	}
 	

@@ -11,7 +11,7 @@ public class GestorUsuarios {
 
     private GestorUsuarios() {
         this.lista = new ArrayList<Usuario>();
-        Usuario admin =new Usuario("123", "administrador", "admin", "admin", 0, null);
+        Usuario admin =new Usuario("123", "administrador", "admin", "admin", 0,  new Date(98, 1, 23));
         admin.hacerAdmin();
         this.lista.add(admin);
     }
