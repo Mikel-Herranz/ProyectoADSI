@@ -35,7 +35,7 @@ public class Registrarse extends JFrame implements Observer{
 	private JTextField textFieldFecha;
 	private JTextField textFieldContraseña;
 	private JButton btnNewButton;
-	private Controler controler;
+	private Controler controler = null;
 
 	/**
 	 * Launch the application.
@@ -101,7 +101,7 @@ public class Registrarse extends JFrame implements Observer{
 		panel.add(textFieldContraseña);
 		
 		
-		panel.add(getBtnNewButton());
+		
 		
 		JLabel lblNewLabel_1 = new JLabel("Nombre:");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -138,32 +138,33 @@ public class Registrarse extends JFrame implements Observer{
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblNewLabel, BorderLayout.NORTH);
 		
-		
+		panel.add(getBtnNewButton());
 		
 	}
 		
 	private JButton getBtnNewButton() {
-		if (btnNewButton==null) {
+		if (btnNewButton == null) {
 			btnNewButton = new JButton("Solicitar Registro");
 			btnNewButton.setForeground(new Color(255, 255, 255));
 			btnNewButton.setBackground(new Color(0, 128, 192));
 			btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
 			btnNewButton.setBounds(277, 655, 368, 98);
 			btnNewButton.addActionListener(getControler());
-		}return btnNewButton;
+		}
+		return btnNewButton;
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg == null) {
-			ErrorReg frame = new ErrorReg();
 			this.dispose();
-			frame.setVisible(true);
+			ErrorReg frame1 = new ErrorReg();
+			frame1.setVisible(true);
 		}
 		else {
-			SolicitudCorrecta frame1 = new SolicitudCorrecta();
 			this.dispose();
-			frame1.setVisible(true);
+			SolicitudCorrecta frame2 = new SolicitudCorrecta();
+			frame2.setVisible(true);
 		}
 	}
 	private Controler getControler() {
