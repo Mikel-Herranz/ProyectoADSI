@@ -1,0 +1,145 @@
+package vista;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import modelo.Videoclub;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.Color;
+
+public class OpcionesPeli extends JFrame implements Observer{
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private String titulo;
+	private JButton btnAlq;
+	private JButton btnReseñar;
+	private JButton btnVolver;
+	private Controler controler;
+	/**
+	 * Launch the application.
+	 */
+	//public static void main(String[] args) {
+	//	EventQueue.invokeLater(new Runnable() {
+	//		public void run() {
+		//		try {
+			//		OpcionesPeli frame = new OpcionesPeli();
+				//	frame.setVisible(true);
+	//			} catch (Exception e) {
+		//			e.printStackTrace();
+			//	}
+	//		}
+		//});
+	//}
+
+	/**
+	 * Create the frame.
+	 */
+	public OpcionesPeli(Observable datos) {
+		datos.addObserver(this);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 801, 657);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.EAST);
+		panel.setLayout(new GridLayout(3, 1, 0, 0));
+		
+		
+		
+		JLabel lblNewLabel = new JLabel("Pelicula: "+ titulo);
+		lblNewLabel.setForeground(new Color(0, 128, 192));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 27));
+		contentPane.add(lblNewLabel, BorderLayout.NORTH);
+		
+		JPanel panel_1 = new JPanel();
+		contentPane.add(panel_1, BorderLayout.CENTER);
+		panel_1.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("Precio:");
+		lblNewLabel_1.setBounds(57, 94, 49, 14);
+		panel_1.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Poster:");
+		lblNewLabel_2.setBounds(57, 192, 49, 14);
+		panel_1.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Desc: ");
+		lblNewLabel_3.setBounds(57, 318, 49, 14);
+		panel_1.add(lblNewLabel_3);
+		
+		
+		panel.add(getBtnAlq());
+		
+		panel.add(getBtnReseñar());
+		
+		panel.add(getBtnVolver());
+	}
+	private JButton getBtnAlq() {
+		if(btnAlq == null) {
+			btnAlq = new JButton("Alquilar");
+			btnAlq.addActionListener(getControler());
+		}
+		return btnAlq;
+	}
+	private JButton getBtnReseñar() {
+		if(btnReseñar == null) {
+			btnReseñar = new JButton("Reseñar (solo si ha sido alquilada)");
+			btnReseñar.addActionListener(getControler());
+		}
+		return btnReseñar;
+	}
+	private JButton getBtnVolver() {
+		if(btnVolver == null) {
+			btnVolver = new JButton("Volver");
+			btnVolver.addActionListener(getControler());
+		}
+		return btnVolver;
+	}
+		
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
+	private Controler getControler() {
+		if (controler == null) {
+			controler = new Controler();
+		}
+		return controler;
+	}
+
+	private class Controler implements ActionListener {
+	
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource().equals(btnVolver)){
+				
+			}
+			else if(e.getSource().equals(btnAlq)){
+				
+			}
+			else if(e.getSource().equals(btnReseñar)){
+				
+			}
+		}
+	}
+	
+}

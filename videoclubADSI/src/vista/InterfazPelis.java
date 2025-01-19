@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import modelo.Videoclub;
 
@@ -41,6 +43,8 @@ public class InterfazPelis extends JFrame implements Observer{
 	private JButton btnOrdenar;
 	private JButton btnDatosPersonales;
 	private String usuario;
+	private JList<String> list;
+	private double saldo;
 
 	/**
 	 * Launch the application.
@@ -105,6 +109,10 @@ public class InterfazPelis extends JFrame implements Observer{
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,}));
 		
+		JLabel lblNewLabel_2 = new JLabel("Saldo:"+ saldo);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		panel_2.add(lblNewLabel_2, "3, 1, 3, 1");
+		
 		JLabel lblNewLabel_1 = new JLabel("Buscar:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel_2.add(lblNewLabel_1, "1, 3, 3, 3, right, default");
@@ -116,9 +124,11 @@ public class InterfazPelis extends JFrame implements Observer{
 		panel_2.add(getBtnDatosPersonales(), "7, 3");
 		panel_2.add(getBtnAmpliado(), "7, 5");
 		panel_2.add(getBtnOrdenar(), "7, 7");
-		JList<String> list = new JList<>(JSON);
+		list = new JList<>(JSON);
 		JScrollPane scrollPane = new JScrollPane(list);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
+		list.addListSelectionListener(getControler());
+
 	
 	}
 		private JButton getBtnCerrarSesion() {
@@ -192,12 +202,12 @@ public class InterfazPelis extends JFrame implements Observer{
 		}
 		return controler;
 	}
-	private class Controler implements ActionListener {
+	private class Controler implements ActionListener, ListSelectionListener {
 		
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource().equals(btnCerrarSesion)){
-			Comienzo frame1 = new Comienzo();
 			InterfazPelis.this.dispose();
+			Comienzo frame1 = new Comienzo();
 			frame1.setVisible(true);
 			}
 			else if (e.getSource().equals(btnAmpliado)) {
@@ -210,5 +220,11 @@ public class InterfazPelis extends JFrame implements Observer{
 				Videoclub.getVideoclub().obtenerPelisOrdenadasPorPunt();
 			}
 		}
+		public void valueChanged(ListSelectionEvent e) {
+	        if (!e.getValueIsAdjusting()) {
+	            String elementoSeleccionado = list.getSelectedValue();
+	            System.out.println("Has seleccionado: " + elementoSeleccionado);
+	        }
+	    }
 	}
 }
