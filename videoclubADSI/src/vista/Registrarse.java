@@ -57,7 +57,7 @@ public class Registrarse extends JFrame implements Observer{
 	 * Create the frame.
 	 */
 	public Registrarse(Observable datos) {
-		datos.addObserver(null);
+		datos.addObserver(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 946, 898);
 		contentPane = new JPanel();
@@ -149,6 +149,7 @@ public class Registrarse extends JFrame implements Observer{
 			btnNewButton.setBackground(new Color(0, 128, 192));
 			btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
 			btnNewButton.setBounds(277, 655, 368, 98);
+			btnNewButton.addActionListener(getControler());
 		}return btnNewButton;
 	}
 
@@ -164,7 +165,6 @@ public class Registrarse extends JFrame implements Observer{
 			this.dispose();
 			frame1.setVisible(true);
 		}
-		
 	}
 	private Controler getControler() {
 		if (controler == null) {
