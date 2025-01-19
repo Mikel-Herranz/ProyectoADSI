@@ -73,11 +73,11 @@ public class GestorUsuarios {
     
     
     
-    public void actualizarDatos(String pContraseña, String pNombre, String pApellido, String pMail, Integer pTelefono,
+    public void actualizarDatos(String pNombre, String pApellido, String pMail, Integer pTelefono,
                                 Date pFechaNacimiento) {
         Usuario unUsuario = buscarUsuarioPorMail(pMail);
         if (unUsuario != null) {
-            unUsuario.actualizarDatos(pContraseña, pNombre, pApellido, pTelefono, pFechaNacimiento);
+            unUsuario.actualizarDatos(pNombre, pApellido, pTelefono, pFechaNacimiento);
         }
     }
 

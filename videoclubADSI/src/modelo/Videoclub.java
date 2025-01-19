@@ -50,8 +50,8 @@ public class Videoclub extends Observable{
 		GestorUsuarios.getGestorUsuarios().eliminarUsuario(pMail);
 	}
 	
-	public void actualizarDatosUsurio(String pContraseña, String pNombre, String pApellido, String pMail, Integer pTelefono, Date pFechaNacimiento) {
-		GestorUsuarios.getGestorUsuarios().actualizarDatos(pContraseña,pNombre,pApellido,pMail,pTelefono,pFechaNacimiento);
+	public void actualizarDatosUsurio(String pNombre, String pApellido, String pMail, Integer pTelefono, Date pFechaNacimiento) {
+		GestorUsuarios.getGestorUsuarios().actualizarDatos(pNombre,pApellido,pMail,pTelefono,pFechaNacimiento);
 	}
 	
 

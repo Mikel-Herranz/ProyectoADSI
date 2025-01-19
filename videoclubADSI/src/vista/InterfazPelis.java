@@ -167,8 +167,14 @@ public class InterfazPelis extends JFrame implements Observer{
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) { // datos personales
 			String datos = (String)arg;
-			
-			CambiarDatosUsu frame1 = new CambiarDatosUsu();
+			String[] partes = datos.split(", ");
+	        
+	        // Crear un array para guardar las partes procesadas
+	        String nombre = partes[0].split(": ")[1];  // Extraer  "Nombre
+	        String apellido = partes[1].split(": ")[1];  // Extraer Apellido: 
+	        String telefono = partes[2].split(": ")[1];  // Extraer Telefono:
+	        String fechaNacimiento = partes[3].split(": ")[1];  // Extraer  "Fecha De Nacimiento: 
+			CambiarDatosUsu frame1 = new CambiarDatosUsu(Videoclub.getVideoclub(),nombre, apellido, telefono, fechaNacimiento, usuario);
 			this.dispose();
 			frame1.setVisible(true);
 			}

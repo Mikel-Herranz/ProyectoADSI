@@ -5,44 +5,65 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.Videoclub;
+
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
 
-public class CambiarDatosUsu extends JFrame {
+public class CambiarDatosUsu extends JFrame implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_3;
-	private JTextField textField_4;
-
+	private JTextField textFieldNombre;
+	private JTextField textFieldApellido;
+	private JTextField textFieldTelf;
+	private JTextField textFieldFecha;
+	private JButton btnModificarDatos;
+	private Controler controler;
+	private String usuario;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CambiarDatosUsu frame = new CambiarDatosUsu();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+	//	EventQueue.invokeLater(new Runnable() {
+	//		public void run() {
+	//			try {
+	//				CambiarDatosUsu frame = new CambiarDatosUsu();
+	//				frame.setVisible(true);
+	//			} catch (Exception e) {
+	//				e.printStackTrace();
+	//			}
+	//		}
+	//	});
+	//}
 
 	/**
 	 * Create the frame.
+	 * @param usuario 
+	 * @param fechaNacimiento 
+	 * @param telefono 
+	 * @param apellido 
+	 * @param nombre 
+	 * @param  
 	 */
-	public CambiarDatosUsu() {
+	public CambiarDatosUsu(Observable datos, String nombre, String apellido, String telefono, String fechaNacimiento, String usuario) {
+		datos.addObserver(this);
+		this.usuario = usuario;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 825, 675);
 		contentPane = new JPanel();
@@ -65,47 +86,83 @@ public class CambiarDatosUsu extends JFrame {
 		lblNewLabel_1.setBounds(263, 62, 65, 14);
 		panel.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(338, 59, 183, 20);
-		panel.add(textField);
+		textFieldNombre = new JTextField(nombre);
+		textFieldNombre.setColumns(10);
+		textFieldNombre.setBounds(338, 59, 183, 20);
+		panel.add(textFieldNombre);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(338, 135, 183, 20);
-		panel.add(textField_1);
+		textFieldApellido = new JTextField(apellido);
+		textFieldApellido.setColumns(10);
+		textFieldApellido.setBounds(338, 135, 183, 20);
+		panel.add(textFieldApellido);
 		
 		JLabel lblNewLabel_2 = new JLabel("Apellido:");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewLabel_2.setBounds(241, 138, 89, 14);
 		panel.add(lblNewLabel_2);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(346, 224, 177, 20);
-		panel.add(textField_3);
+		textFieldTelf = new JTextField(telefono);
+		textFieldTelf.setColumns(10);
+		textFieldTelf.setBounds(346, 224, 177, 20);
+		panel.add(textFieldTelf);
 		
 		JLabel lblNewLabel_2_2 = new JLabel("Telefono:");
 		lblNewLabel_2_2.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewLabel_2_2.setBounds(237, 227, 101, 14);
 		panel.add(lblNewLabel_2_2);
 		
-		JLabel lblNewLabel_2_3 = new JLabel("Fecha de Nacimiento:");
+		JLabel lblNewLabel_2_3 = new JLabel("Fecha de Nacimiento(yyyy-MM-dd):");
 		lblNewLabel_2_3.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_2_3.setBounds(175, 319, 163, 14);
+		lblNewLabel_2_3.setBounds(99, 319, 239, 14);
 		panel.add(lblNewLabel_2_3);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(346, 316, 183, 20);
-		panel.add(textField_4);
+		textFieldFecha = new JTextField(fechaNacimiento);
+		textFieldFecha.setColumns(10);
+		textFieldFecha.setBounds(346, 316, 183, 20);
+		panel.add(textFieldFecha);
+		panel.add(getBtnModificarDatos());
 		
-		JButton btnModificarDatos = new JButton("Modificar Datos");
-		btnModificarDatos.setForeground(Color.WHITE);
-		btnModificarDatos.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnModificarDatos.setBackground(new Color(0, 128, 192));
-		btnModificarDatos.setBounds(237, 425, 368, 98);
-		panel.add(btnModificarDatos);
+	}
+	private JButton getBtnModificarDatos() {
+		if(btnModificarDatos == null) {
+			btnModificarDatos = new JButton("Modificar Datos");
+			btnModificarDatos.setForeground(Color.WHITE);
+			btnModificarDatos.setFont(new Font("Tahoma", Font.BOLD, 20));
+			btnModificarDatos.setBackground(new Color(0, 128, 192));
+			btnModificarDatos.setBounds(237, 425, 368, 98);
+			btnModificarDatos.addActionListener(getControler());	
+		}
+		return btnModificarDatos;
 	}
 
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private Controler getControler() {
+		if (controler == null) {
+			controler = new Controler();
+		}
+		return controler;
+	}
+
+	private class Controler implements ActionListener {
+	
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource().equals(btnModificarDatos)){
+				Integer numero = Integer.parseInt(textFieldTelf.getText());
+				String fechaStr = textFieldFecha.getText();
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+			    // Convertir la cadena a LocalDate (sin hora)
+			    LocalDate localDate = LocalDate.parse(fechaStr, formatter);
+
+			    // Convertir LocalDate a Date (si es necesario)
+			    Date fecha = java.sql.Date.valueOf(localDate);
+				Videoclub.getVideoclub().actualizarDatosUsurio(textFieldNombre.getText(),textFieldApellido.getText(), usuario, numero, fecha);
+			}
+		}
+	}
 }

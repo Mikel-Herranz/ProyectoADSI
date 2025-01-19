@@ -52,9 +52,8 @@ public class Usuario {
 		return this.mail;
 	}
 
-	public void actualizarDatos(String pContraseña, String pNombre, String pApellido,  int pTelefono,
+	public void actualizarDatos( String pNombre, String pApellido,  int pTelefono,
 			Date pFechaNacimiento) {
-		this.contraseña=pContraseña;
 		this.nombre=pNombre;
 		this.apellido=pApellido;
 		this.telefono=pTelefono;
