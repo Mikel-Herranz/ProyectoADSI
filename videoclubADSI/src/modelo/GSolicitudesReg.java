@@ -23,16 +23,15 @@ public class GSolicitudesReg {
 	public void insertarSolicitud(String contraseña, String nombre, String apellido, String mail, int telefono,Date fechaNacimiento) {
 		lista.add(new SolicitudReg(contraseña, nombre, apellido, mail, telefono, fechaNacimiento));
 	}
-	public ArrayList<String> mostrarSolicitudes() {
-		SolicitudReg unaSolicitud = null;
-		Iterator<SolicitudReg> itr = getItr();
-		ArrayList<String> json= new ArrayList<String>();
-		String actual = null;
+	public String[] mostrarSolicitudes() {
+		String[] json = new String[lista.size()];
 		
-		while (itr.hasNext()) {
-			unaSolicitud = itr.next();
-			actual=unaSolicitud.obtenerInfo();
-			json.add(actual);
+		int pos=0;
+		
+		while(pos<lista.size()) {
+			
+			json[pos]=lista.get(pos).obtenerInfo();
+			pos++;
 		}
 		return json;
 	}

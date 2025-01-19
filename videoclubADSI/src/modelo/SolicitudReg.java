@@ -21,7 +21,7 @@ public class SolicitudReg {
 	}
 
 	public String obtenerInfo() {
-		return "Contraseña" + contraseña + "Nombre" + nombre + "Apellido" + apellido  + "Mail" + mail + "Telefono" + telefono + "Fecha De Nacimiento" + fechaNacimiento;
+		return "Contraseña: " + contraseña +","+ "Nombre: " + nombre +","+ "Apellido: " + apellido  +","+ "Mail: " + mail +","+ "Telefono: " + telefono +","+ "Fecha De Nacimiento: " + fechaNacimiento;
 	}
 
 	public boolean esEsta(String pMail) {

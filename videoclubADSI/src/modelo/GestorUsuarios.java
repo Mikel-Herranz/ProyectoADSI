@@ -103,4 +103,10 @@ public class GestorUsuarios {
 		}
 		
 	}
+
+	public String mostrarUsuario(String pMail) {
+		Usuario unUsu = buscarUsuarioPorMail(pMail);
+		return unUsu.obtenerDatos();
+		
+	}
 }

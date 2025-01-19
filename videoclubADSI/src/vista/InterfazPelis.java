@@ -7,9 +7,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import modelo.Videoclub;
+import vista.InicioSesion.Controler;
 
 import javax.swing.JScrollPane;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -32,6 +35,11 @@ public class InterfazPelis extends JFrame implements Observer{
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
+	private Controler controler = null;
+	private JButton btnCerrarSesion;
+	private JButton btnAmpliado;
+	private JButton btnOrdenar;
+	private JButton btnDatosPersonales;
 
 	/**
 	 * Launch the application.
@@ -95,10 +103,10 @@ public class InterfazPelis extends JFrame implements Observer{
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,}));
 		
-		JButton btnNewButton = new JButton("Cerrar Sesion");
-		btnNewButton.setBackground(new Color(0, 128, 192));
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		panel_2.add(btnNewButton, "7, 1");
+		JButton btnCerrarSesion = new JButton("Cerrar Sesion");
+		btnCerrarSesion.setBackground(new Color(0, 128, 192));
+		btnCerrarSesion.setForeground(new Color(255, 255, 255));
+		panel_2.add(btnCerrarSesion, "7, 1");
 		
 		JLabel lblNewLabel_1 = new JLabel("Buscar:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -108,20 +116,20 @@ public class InterfazPelis extends JFrame implements Observer{
 		panel_2.add(textField, "5, 3, 1, 4, fill, default");
 		textField.setColumns(10);
 		
-		JButton btnNewButton_1 = new JButton("Cambiar Datos Personaleses");
-		btnNewButton_1.setBackground(new Color(0, 128, 192));
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		panel_2.add(btnNewButton_1, "7, 3");
+		JButton btnDatosPersonales = new JButton("Cambiar Datos Personaleses");
+		btnDatosPersonales.setBackground(new Color(0, 128, 192));
+		btnDatosPersonales.setForeground(new Color(255, 255, 255));
+		panel_2.add(btnDatosPersonales, "7, 3");
 		
-		JButton btnNewButton_3 = new JButton("Abrir Catalogo Ampliado");
-		btnNewButton_3.setBackground(new Color(0, 128, 192));
-		btnNewButton_3.setForeground(new Color(255, 255, 255));
-		panel_2.add(btnNewButton_3, "7, 5");
+		JButton btnAmpliado = new JButton("Abrir Catalogo Ampliado");
+		btnAmpliado.setBackground(new Color(0, 128, 192));
+		btnAmpliado.setForeground(new Color(255, 255, 255));
+		panel_2.add(btnAmpliado, "7, 5");
 		
-		JButton btnNewButton_2 = new JButton("Ordenar Pelis");
-		btnNewButton_2.setBackground(new Color(0, 128, 192));
-		btnNewButton_2.setForeground(new Color(255, 255, 255));
-		panel_2.add(btnNewButton_2, "7, 7");
+		JButton btnOrdenar = new JButton("Ordenar Pelis");
+		btnOrdenar.setBackground(new Color(0, 128, 192));
+		btnOrdenar.setForeground(new Color(255, 255, 255));
+		panel_2.add(btnOrdenar, "7, 7");
 		
 		JList<String> list = new JList<>(JSON);
 		JScrollPane scrollPane = new JScrollPane(list);
@@ -136,5 +144,18 @@ public class InterfazPelis extends JFrame implements Observer{
 		
 		
 	}
-
+	private Controler getControler() {
+		if (controler == null) {
+			controler = new Controler();
+		}
+		return controler;
+	}
+	private class Controler implements ActionListener {
+		
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource().equals(btnIniciarSesion)){
+			Videoclub.getVideoclub().iniciarSesion(txtInserteMail.getText(), txtInserteContrasea.getText());
+			}
+		}
+	}
 }
