@@ -136,7 +136,9 @@ public class OpcionesPeli extends JFrame implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		this.dispose();
+		InterfazPelis frame2 = new InterfazPelis(Videoclub.getVideoclub(), (String[])arg, usuario);
+		frame2.setVisible(true);
 		
 	}
 	private Controler getControler() {
