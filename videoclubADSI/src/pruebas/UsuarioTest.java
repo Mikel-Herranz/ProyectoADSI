@@ -2,6 +2,10 @@ package pruebas;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,9 +15,22 @@ import modelo.Usuario;
 
 class UsuarioTest {
 	Usuario usu1;
+	
+	// String que representa la fecha
+    String fechaStr = "1995-06-24";
+
+    // Definir el formato de la fecha
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    // Convertir la cadena a LocalDate (sin hora)
+    LocalDate localDate = LocalDate.parse(fechaStr, formatter);
+
+    // Convertir LocalDate a Date (si es necesario)
+    Date fecha = java.sql.Date.valueOf(localDate);
+
 	@BeforeEach
 	void setUp() throws Exception {
-		 usu1= new Usuario("pi", "po", "pol", "gmail", 34, null);
+		 usu1= new Usuario("pi", "po", "pol", "gmail", 69258180, fecha);
 	}
 
 	@AfterEach
@@ -68,7 +85,7 @@ class UsuarioTest {
 	@Test
 	void testObtenerInfo() {
 		
-		System.out.println(usu1.obtenerInfo());
+		System.out.println(usu1.obtenerDatos());
 	}
 
 }

@@ -26,7 +26,7 @@ public class Videoclub extends Observable{
 		}
 	}
 	
-	public void solicitarRegistro(String pContraseña, String pNombre, String pApellido, String pMail, int pTelefono, Date pFechaNacimiento) {
+	public void solicitarRegistro(String pContraseña, String pNombre, String pApellido, String pMail, Integer pTelefono, Date pFechaNacimiento) {
 		Usuario elUsuario= GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
 		if (elUsuario != null) {
 			System.out.println("usuario ya existente");
@@ -50,7 +50,7 @@ public class Videoclub extends Observable{
 		GestorUsuarios.getGestorUsuarios().eliminarUsuario(pMail);
 	}
 	
-	public void actualizarDatosUsurio(String pContraseña, String pNombre, String pApellido, String pMail, int pTelefono, Date pFechaNacimiento) {
+	public void actualizarDatosUsurio(String pContraseña, String pNombre, String pApellido, String pMail, Integer pTelefono, Date pFechaNacimiento) {
 		GestorUsuarios.getGestorUsuarios().actualizarDatos(pContraseña,pNombre,pApellido,pMail,pTelefono,pFechaNacimiento);
 	}
 	

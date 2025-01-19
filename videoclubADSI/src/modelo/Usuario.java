@@ -11,7 +11,7 @@ public class Usuario {
     private String nombre ;
     private String apellido ;
     private String mail ;
-    private int telefono;
+    private Integer telefono;
     private Date fechaNacimiento;
     private double saldo;
     private boolean admin ;
@@ -99,7 +99,7 @@ public class Usuario {
 	}
 
 	public String obtenerDatos() {
-		return "Nombre: " + nombre +","+"Apellido: " + apellido+","+"Telefono: "+ telefono +","+"Fecha De Nacimiento: "+ fechaNacimiento;
+		return "Nombre: " + nombre +","+" Apellido: " + apellido+","+" Telefono: "+ telefono +","+" Fecha De Nacimiento: "+ fechaNacimiento.toString();
 	}
 	
 }

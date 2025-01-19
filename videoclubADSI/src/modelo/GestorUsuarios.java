@@ -49,7 +49,7 @@ public class GestorUsuarios {
         return unUsuario;
     }
 
-    public void anadirUsuario(String pContraseña, String pNombre, String pApellido, String pMail, int pTelefono,
+    public void anadirUsuario(String pContraseña, String pNombre, String pApellido, String pMail, Integer pTelefono,
                               Date pFechaNacimiento) {
         lista.add(new Usuario(pContraseña, pNombre, pApellido, pMail, pTelefono, pFechaNacimiento));
     }
@@ -73,7 +73,7 @@ public class GestorUsuarios {
     
     
     
-    public void actualizarDatos(String pContraseña, String pNombre, String pApellido, String pMail, int pTelefono,
+    public void actualizarDatos(String pContraseña, String pNombre, String pApellido, String pMail, Integer pTelefono,
                                 Date pFechaNacimiento) {
         Usuario unUsuario = buscarUsuarioPorMail(pMail);
         if (unUsuario != null) {
