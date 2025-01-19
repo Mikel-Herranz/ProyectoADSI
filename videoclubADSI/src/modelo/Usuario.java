@@ -94,5 +94,12 @@ public class Usuario {
 		this.reseñadas.add(unaPelicula);
 		
 	}
+	public String obtenerInfo() {
+		return "Email: " + mail +","+"Nombre: " + nombre +","+"Apellido: " + apellido;
+	}
+
+	public String obtenerDatos() {
+		return "Nombre: " + nombre +","+"Apellido: " + apellido+","+"Telefono: "+ telefono +","+"Fecha De Nacimiento: "+ fechaNacimiento;
+	}
 	
 }

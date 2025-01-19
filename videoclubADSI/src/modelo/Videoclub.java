@@ -37,8 +37,8 @@ public class Videoclub extends Observable{
 		}
 	}
 	
-	public ArrayList<String> mostrarSolicitudes() {
-		ArrayList<String> res=GSolicitudesReg.getGSolicitudReg().mostrarSolicitudes();
+	public String[] mostrarSolicitudes() {
+		String[] res=GSolicitudesReg.getGSolicitudReg().mostrarSolicitudes();
 		return res;
 	}
 	
@@ -54,8 +54,8 @@ public class Videoclub extends Observable{
 		GestorUsuarios.getGestorUsuarios().actualizarDatos(pContraseña,pNombre,pApellido,pMail,pTelefono,pFechaNacimiento);
 	}
 	
-	public ArrayList<String> mostrarPeliculas() {
-		ArrayList<String> res=GestorPeliculas.getGestorPeliculas().mostrarPeliculas();
+	public String[] mostrarPeliculas() {
+		String[] res=GestorPeliculas.getGestorPeliculas().mostrarPeliculas();
 		return res;
 	}
 	
@@ -90,8 +90,8 @@ public class Videoclub extends Observable{
 		return punt;
 	}
 	
-	public ArrayList<String> obtenerPelisOrdenadasPorPunt() {
-		ArrayList<String> resultado = GestorPeliculas.getGestorPeliculas().mostrarPeliculasOrdenadas();
+	public String[] obtenerPelisOrdenadasPorPunt() {
+		String[] resultado = GestorPeliculas.getGestorPeliculas().mostrarPeliculasOrdenadas();
 		return resultado;
 		
 	}
@@ -99,5 +99,34 @@ public class Videoclub extends Observable{
 		Pelicula unaPelicula =GestorPeliculas.getGestorPeliculas().obtenerPelicula(pTitulo);
 		Usuario unUsuario= GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
 		GestorResenas.getGestorResenas().modificarResena(unaPelicula,unUsuario,pComent,pPunt);
+	}
+	
+	public void pedirIncorporamiento(String pMail,String pTitulo,String pTrailer,String pDescr ,double pPrecio) {
+		Usuario unUsuario = GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
+		GestorIncorporamientos.getGestorIncorporamientos().crearIncorporamiento(unUsuario, pTitulo, pTrailer, pDescr ,pPrecio);
+	}
+	
+	public String[] mostrarIncorporamientos(){
+		String[] res=GestorIncorporamientos.getGestorIncorporamientos().obtenerIncorporamientos();
+		return res;
+	}
+	
+	public String[] aceptarIncorporamiento(String pMail,String pTitulo){
+		Usuario unUsuario = GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
+		GestorIncorporamientos.getGestorIncorporamientos().aceptarInc(unUsuario,pTitulo);
+		String[] res=GestorIncorporamientos.getGestorIncorporamientos().obtenerIncorporamientos();
+		return res;
+		
+	}
+	public String mostrarDatosUsuario(String pMail) {
+		String res=GestorUsuarios.getGestorUsuarios().mostrarUsuario(pMail);
+		return res;
+	}
+	
+	public String[] rechazarrIncorporamiento(String pMail,String pTitulo){
+		Usuario unUsuario = GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
+		GestorIncorporamientos.getGestorIncorporamientos().rechazarInc(unUsuario,pTitulo);
+		String[] res=GestorIncorporamientos.getGestorIncorporamientos().obtenerIncorporamientos();
+		return res;
 	}
 }

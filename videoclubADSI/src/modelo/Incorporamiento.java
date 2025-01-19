@@ -10,4 +10,22 @@ public class Incorporamiento{
         this.que=peli;
     }
 
+	public String obtenerInfo() {
+		return quien.obtenerInfo() + que.obtenerInfo();
+	}
+
+	public Usuario getUsuario() {
+		// TODO Auto-generated method stub
+		return this.quien;
+	}
+
+	public String getTituloPeli() {
+		// TODO Auto-generated method stub
+		return this.que.getTitilo();
+	}
+
+	public Pelicula getPeli() {
+		return this.que;
+	}
+
 }
