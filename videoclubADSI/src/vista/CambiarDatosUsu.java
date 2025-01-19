@@ -72,7 +72,7 @@ public class CambiarDatosUsu extends JFrame implements Observer{
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel = new JLabel("Editando Datos Personales");
+		JLabel lblNewLabel = new JLabel("Editando Datos De: "+ usuario);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		contentPane.add(lblNewLabel, BorderLayout.NORTH);

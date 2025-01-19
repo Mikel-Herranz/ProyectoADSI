@@ -22,10 +22,14 @@ public class Videoclub extends Observable{
 			notifyObservers(null);
 		}
 		else {
-			System.out.println("se ha iniciado sesion");
-			String[] pelis =mostrarPeliculas();
-			setChanged();
-			notifyObservers(pelis);
+			if (elUsuario.esAdmin()) {
+				
+			}
+			else{
+				System.out.println("se ha iniciado sesion");
+				mostrarPeliculas();
+			}
+			
 		}
 	}
 	
@@ -33,10 +37,14 @@ public class Videoclub extends Observable{
 		Usuario elUsuario= GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
 		if (elUsuario != null) {
 			System.out.println("usuario ya existente");
+			setChanged();
+			notifyObservers(null);
 		}
 		else {
 			GSolicitudesReg.getGSolicitudReg().insertarSolicitud(pContraseña, pNombre, pApellido, pMail, pTelefono, pFechaNacimiento);
 			System.out.println("se ha enviado una solicitud de registro, pronto sera verificada");
+			setChanged();
+			notifyObservers(1);
 		}
 	}
 	
@@ -55,14 +63,15 @@ public class Videoclub extends Observable{
 	
 	public void actualizarDatosUsurio(String pNombre, String pApellido, String pMail, Integer pTelefono, Date pFechaNacimiento) {
 		GestorUsuarios.getGestorUsuarios().actualizarDatos(pNombre,pApellido,pMail,pTelefono,pFechaNacimiento);
-		setChanged();
-		notifyObservers(mostrarPeliculas());
+		mostrarPeliculas();
 		
 	}
 	
 
 	public String[] mostrarPeliculas() {
 		String[] res=GestorPeliculas.getGestorPeliculas().mostrarPeliculas();
+		setChanged();
+		notifyObservers(res);
 		return res;
 	}
 	

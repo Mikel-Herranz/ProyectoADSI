@@ -223,7 +223,10 @@ public class InterfazPelis extends JFrame implements Observer{
 		public void valueChanged(ListSelectionEvent e) {
 	        if (!e.getValueIsAdjusting()) {
 	            String elementoSeleccionado = list.getSelectedValue();
-	            System.out.println("Has seleccionado: " + elementoSeleccionado);
+	            System.out.println(elementoSeleccionado);
+	            OpcionesPeli frame = new OpcionesPeli(Videoclub.getVideoclub(),usuario, elementoSeleccionado);
+	            InterfazPelis.this.dispose();
+	            frame.setVisible(true);
 	        }
 	    }
 	}

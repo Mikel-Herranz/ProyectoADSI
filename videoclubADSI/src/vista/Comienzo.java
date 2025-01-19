@@ -61,7 +61,7 @@ public class Comienzo extends JFrame {
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Comienzo.this.dispose();
-				Registrarse frame = new Registrarse();
+				Registrarse frame = new Registrarse(Videoclub.getVideoclub());
 				frame.setVisible(true);
 			}
 		});
