@@ -47,6 +47,22 @@ public class Pelicula {
 	public String getTitilo() {
 		return this.titulo;
 	}
+
+
+
+
+	public void actualizarPuntPromedio(double res) {
+		this.puntMedia=res;
+		
+	}
+
+
+
+
+	public double getPunt() {
+		// TODO Auto-generated method stub
+		return this.puntMedia;
+	}
     
     
     

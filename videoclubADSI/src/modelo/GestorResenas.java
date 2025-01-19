@@ -69,4 +69,25 @@ public class GestorResenas {
 				}
 		}
 	}
+
+	public void actaulizarPuntPromedio(Pelicula unaPelicula) {
+		Iterator<Resena> itr =getItr();
+		boolean es=false;
+		Resena unaResena=null;
+		double total =0.0;
+		double res=0.0;
+		double numresenas=0.0;
+		while (itr.hasNext()) {
+			unaResena= itr.next();
+			es=unaResena.esDe(unaPelicula);
+			if (es==true) {
+				total=total+unaResena.getPuntuacion();
+				numresenas=numresenas+1;
+			}
+			
+		}
+		res= total/numresenas;
+		unaPelicula.actualizarPuntPromedio(res);
+		
+	}
 }

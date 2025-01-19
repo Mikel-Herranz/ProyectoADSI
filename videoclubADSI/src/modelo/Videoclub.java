@@ -36,6 +36,7 @@ public class Videoclub extends Observable{
 			System.out.println("se ha enviado una solicitud de registro, pronto sera verificada");
 		}
 	}
+	
 	public ArrayList<String> mostrarSolicitudes() {
 		ArrayList<String> res=GSolicitudesReg.getGSolicitudReg().mostrarSolicitudes();
 		return res;
@@ -44,6 +45,7 @@ public class Videoclub extends Observable{
 	public void aceptarSolicitudReg(String pMail) {
 		GSolicitudesReg.getGSolicitudReg().aceptarSolicitud(pMail);
 	}
+	
 	public void eliminarCuenta(String pMail) {
 		GestorUsuarios.getGestorUsuarios().eliminarUsuario(pMail);
 	}
@@ -51,6 +53,7 @@ public class Videoclub extends Observable{
 	public void actualizarDatosUsurio(String pContraseña, String pNombre, String pApellido, String pMail, int pTelefono, Date pFechaNacimiento) {
 		GestorUsuarios.getGestorUsuarios().actualizarDatos(pContraseña,pNombre,pApellido,pMail,pTelefono,pFechaNacimiento);
 	}
+	
 	public ArrayList<String> mostrarPeliculas() {
 		ArrayList<String> res=GestorPeliculas.getGestorPeliculas().mostrarPeliculas();
 		return res;
@@ -75,6 +78,7 @@ public class Videoclub extends Observable{
 			Usuario unUsuario= GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
 			GestorUsuarios.getGestorUsuarios().resenarPeliPara(pMail,unaPelicula);
 			GestorResenas.getGestorResenas().crearResena(unUsuario,unaPelicula,pComent,pPunt);
+			GestorResenas.getGestorResenas().actaulizarPuntPromedio(unaPelicula);
 			
 		}
 		
@@ -82,11 +86,14 @@ public class Videoclub extends Observable{
 	public double verPuntPromedio(String pTitulo) {
 		Pelicula unaPelicula =GestorPeliculas.getGestorPeliculas().obtenerPelicula(pTitulo);
 		double punt =GestorResenas.getGestorResenas().obtenerPuntPromedio(unaPelicula);
+		
 		return punt;
 	}
 	
-	public void obtenerPelisOrdenadasPorPunt() {
-		//todo
+	public ArrayList<String> obtenerPelisOrdenadasPorPunt() {
+		ArrayList<String> resultado = GestorPeliculas.getGestorPeliculas().mostrarPeliculasOrdenadas();
+		return resultado;
+		
 	}
 	public void cambiarResena(String pMail,String pTitulo,String pComent ,double pPunt) {
 		Pelicula unaPelicula =GestorPeliculas.getGestorPeliculas().obtenerPelicula(pTitulo);
