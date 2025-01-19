@@ -118,8 +118,9 @@ public class InicioSesion extends JFrame implements Observer{
 		}
 		else {
 			//aqui abrir pagina de inicio con la interfaz de pelis y posibilidad de ir a actualizar datos personales
-			InterfazPelis frame2 = new InterfazPelis(Videoclub.getVideoclub(), (String[])arg, txtInserteMail.getText());
 			this.dispose();
+			InterfazPelis frame2 = new InterfazPelis(Videoclub.getVideoclub(), (String[])arg, txtInserteMail.getText());
+			
 			frame2.setVisible(true);
 		}
 	}

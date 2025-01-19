@@ -1,4 +1,5 @@
 package modelo;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -98,7 +99,9 @@ public class Usuario {
 	}
 
 	public String obtenerDatos() {
-		return "Nombre: " + nombre +","+" Apellido: " + apellido+","+" Telefono: "+ telefono +","+" Fecha De Nacimiento: "+ fechaNacimiento.toString();
+		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		String fechaFormateada = formato.format(fechaNacimiento);
+		return "Nombre: " + nombre +","+" Apellido: " + apellido+","+" Telefono: "+ telefono +","+" Fecha De Nacimiento: "+fechaFormateada;
 	}
 	
 }
