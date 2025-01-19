@@ -51,6 +51,7 @@ public class Videoclub extends Observable{
 	public void actualizarDatosUsurio(String pContraseña, String pNombre, String pApellido, String pMail, int pTelefono, Date pFechaNacimiento) {
 		GestorUsuarios.getGestorUsuarios().actualizarDatos(pContraseña,pNombre,pApellido,pMail,pTelefono,pFechaNacimiento);
 	}
+	
 	public ArrayList<String> mostrarPeliculas() {
 		ArrayList<String> res=GestorPeliculas.getGestorPeliculas().mostrarPeliculas();
 		return res;

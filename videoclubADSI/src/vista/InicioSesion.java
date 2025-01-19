@@ -35,18 +35,18 @@ public class InicioSesion extends JFrame implements Observer{
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InicioSesion frame = new InicioSesion(Videoclub.getVideoclub());
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+		//EventQueue.invokeLater(new Runnable() {
+	//		public void run() {
+	//			try {
+		//			InicioSesion frame = new InicioSesion(Videoclub.getVideoclub());
+		//			frame.setVisible(true);
+		//		} catch (Exception e) {
+		//			e.printStackTrace();
+		//		}
+		//	}
+	//	});
+//	}
 
 	/**
 	 * Create the frame.
