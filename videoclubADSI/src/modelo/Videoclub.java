@@ -43,8 +43,9 @@ public class Videoclub extends Observable{
 		else {
 			GSolicitudesReg.getGSolicitudReg().insertarSolicitud(pContraseña, pNombre, pApellido, pMail, pTelefono, pFechaNacimiento);
 			System.out.println("se ha enviado una solicitud de registro, pronto sera verificada");
+			int num = 1;
 			setChanged();
-			notifyObservers(1);
+			notifyObservers(num);
 		}
 	}
 	
