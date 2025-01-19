@@ -5,24 +5,37 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.Videoclub;
+
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
 
-public class Registrarse extends JFrame {
+public class Registrarse extends JFrame implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField textFieldNombre;
+	private JTextField textFieldApellido;
+	private JTextField textFieldMail;
+	private JTextField textFieldTelefono;
+	private JTextField textFieldFecha;
+	private JTextField textFieldContraseña;
+	private JButton btnNewButton;
+	private Controler controler;
 
 	/**
 	 * Launch the application.
@@ -31,7 +44,7 @@ public class Registrarse extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Registrarse frame = new Registrarse();
+					Registrarse frame = new Registrarse(Videoclub.getVideoclub());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +56,8 @@ public class Registrarse extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Registrarse() {
+	public Registrarse(Observable datos) {
+		datos.addObserver(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 946, 898);
 		contentPane = new JPanel();
@@ -56,42 +70,38 @@ public class Registrarse extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(331, 114, 192, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setBounds(331, 114, 192, 20);
+		panel.add(textFieldNombre);
+		textFieldNombre.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(331, 193, 192, 20);
-		panel.add(textField_1);
+		textFieldApellido = new JTextField();
+		textFieldApellido.setColumns(10);
+		textFieldApellido.setBounds(331, 193, 192, 20);
+		panel.add(textFieldApellido);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(331, 291, 192, 20);
-		panel.add(textField_2);
+		textFieldMail = new JTextField();
+		textFieldMail.setColumns(10);
+		textFieldMail.setBounds(331, 291, 192, 20);
+		panel.add(textFieldMail);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(331, 370, 192, 20);
-		panel.add(textField_3);
+		textFieldTelefono = new JTextField();
+		textFieldTelefono.setColumns(10);
+		textFieldTelefono.setBounds(331, 370, 192, 20);
+		panel.add(textFieldTelefono);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(331, 462, 192, 20);
-		panel.add(textField_4);
+		textFieldFecha = new JTextField();
+		textFieldFecha.setColumns(10);
+		textFieldFecha.setBounds(331, 462, 192, 20);
+		panel.add(textFieldFecha);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(331, 564, 192, 20);
-		panel.add(textField_5);
+		textFieldContraseña = new JTextField();
+		textFieldContraseña.setColumns(10);
+		textFieldContraseña.setBounds(331, 564, 192, 20);
+		panel.add(textFieldContraseña);
 		
-		JButton btnNewButton = new JButton("Solicitar Registro");
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(0, 128, 192));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnNewButton.setBounds(277, 655, 368, 98);
-		panel.add(btnNewButton);
+		
+		panel.add(getBtnNewButton());
 		
 		JLabel lblNewLabel_1 = new JLabel("Nombre:");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -127,5 +137,59 @@ public class Registrarse extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblNewLabel, BorderLayout.NORTH);
+		
+		
+		
 	}
+		
+	private JButton getBtnNewButton() {
+		if (btnNewButton==null) {
+			btnNewButton = new JButton("Solicitar Registro");
+			btnNewButton.setForeground(new Color(255, 255, 255));
+			btnNewButton.setBackground(new Color(0, 128, 192));
+			btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
+			btnNewButton.setBounds(277, 655, 368, 98);
+		}return btnNewButton;
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		if(arg == null) {
+			ErrorReg frame = new ErrorReg();
+			this.dispose();
+			frame.setVisible(true);
+		}
+		else {
+			SolicitudCorrecta frame1 = new SolicitudCorrecta();
+			this.dispose();
+			frame1.setVisible(true);
+		}
+		
+	}
+	private Controler getControler() {
+		if (controler == null) {
+			controler = new Controler();
+		}
+		return controler;
+	}
+
+	private class Controler implements ActionListener {
+	
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource().equals(btnNewButton)){
+				Integer numero = Integer.parseInt(textFieldTelefono.getText());
+				String fechaStr = textFieldFecha.getText();
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+			    // Convertir la cadena a LocalDate (sin hora)
+			    LocalDate localDate = LocalDate.parse(fechaStr, formatter);
+
+			    // Convertir LocalDate a Date (si es necesario)
+			    Date fecha = java.sql.Date.valueOf(localDate);
+				Videoclub.getVideoclub().solicitarRegistro(textFieldContraseña.getText(), textFieldNombre.getText(), textFieldApellido.getText(), textFieldMail.getText(), numero, fecha);
+				
+			}
+		}
+	}
+		
 }

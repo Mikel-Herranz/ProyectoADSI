@@ -103,5 +103,9 @@ public class Usuario {
 		String fechaFormateada = formato.format(fechaNacimiento);
 		return "Nombre: " + nombre +","+" Apellido: " + apellido+","+" Telefono: "+ telefono +","+" Fecha De Nacimiento: "+fechaFormateada;
 	}
+
+	public boolean esAdmin() {
+		return this.admin;
+	}
 	
 }
