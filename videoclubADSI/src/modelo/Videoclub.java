@@ -23,6 +23,9 @@ public class Videoclub extends Observable{
 		}
 		else {
 			System.out.println("se ha iniciado sesion");
+			String[] pelis =mostrarPeliculas();
+			setChanged();
+			notifyObservers(pelis);
 		}
 	}
 	
@@ -52,6 +55,9 @@ public class Videoclub extends Observable{
 	
 	public void actualizarDatosUsurio(String pNombre, String pApellido, String pMail, Integer pTelefono, Date pFechaNacimiento) {
 		GestorUsuarios.getGestorUsuarios().actualizarDatos(pNombre,pApellido,pMail,pTelefono,pFechaNacimiento);
+		setChanged();
+		notifyObservers(null);
+		
 	}
 	
 
@@ -121,6 +127,8 @@ public class Videoclub extends Observable{
 	}
 	public String mostrarDatosUsuario(String pMail) {
 		String res=GestorUsuarios.getGestorUsuarios().mostrarUsuario(pMail);
+		setChanged();
+		notifyObservers(res);
 		return res;
 	}
 	

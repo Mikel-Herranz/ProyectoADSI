@@ -10,6 +10,9 @@ public class GestorPeliculas {
 
     private GestorPeliculas() {
         this.lista = new ArrayList<Pelicula>();
+        Pelicula peli = new Pelicula(null, "omg", "no hay", 1.20, "Increibles");
+        lista.add(peli);
+        lista.add(new Pelicula(null, "lol", "nohay", 0.23, "Love"));
     }
 
     public static GestorPeliculas getGestorPeliculas() {

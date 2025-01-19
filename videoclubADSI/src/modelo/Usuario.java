@@ -18,7 +18,7 @@ public class Usuario {
     private ArrayList<Pelicula> alquiladas;
     private ArrayList<Pelicula> reseñadas;
 
-	public Usuario( String contraseña, String nombre, String apellido, String mail, int telefono,
+	public Usuario( String contraseña, String nombre, String apellido, String mail, Integer telefono,
 			Date fechaNacimiento) {
 		
 		
@@ -40,8 +40,8 @@ public class Usuario {
 	
 	public boolean coincide(String pMail, String pContraseña) {
 		 boolean coincide = false;
-		 if (pMail == this.mail) {
-			 if (pContraseña == this.contraseña) {
+		 if (this.mail.equals(pMail)) {
+			 if (this.contraseña.equals(pContraseña)) {
 				 coincide = true;
 			 }
 		 } 
@@ -52,7 +52,7 @@ public class Usuario {
 		return this.mail;
 	}
 
-	public void actualizarDatos( String pNombre, String pApellido,  int pTelefono,
+	public void actualizarDatos( String pNombre, String pApellido,  Integer pTelefono,
 			Date pFechaNacimiento) {
 		this.nombre=pNombre;
 		this.apellido=pApellido;
