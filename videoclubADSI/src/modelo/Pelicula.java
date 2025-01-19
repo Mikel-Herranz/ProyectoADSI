@@ -6,7 +6,7 @@ public class Pelicula {
     
     private Usuario aceptadaPor;
     private String desc;
-    private Image trailer;
+    private String trailer;//en url
     private double puntMedia;
     private double precioAlq;
     private String titulo;
@@ -14,7 +14,7 @@ public class Pelicula {
     
     
     
-    public Pelicula(Usuario quien,int codPelicula, String desc, Image trailer, double precioAlq, String titulo) {
+    public Pelicula(Usuario quien,int codPelicula, String desc, String trailer, double precioAlq, String titulo) {
 
 		
 		this.desc = desc;
@@ -28,8 +28,8 @@ public class Pelicula {
 
 
 
-	public void obtenerInfo() {
-		//Tema devolver Json
+	public String obtenerInfo() {
+		return "Descripcion" + desc + "Trailer" + trailer + "Precio" + precioAlq + "Titulo" + titulo;
 		
 	}
 

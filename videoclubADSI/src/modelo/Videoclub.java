@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Observable;
 public class Videoclub extends Observable{
@@ -33,8 +34,9 @@ public class Videoclub extends Observable{
 			System.out.println("se ha enviado una solicitud de registro, pronto sera verificada");
 		}
 	}
-	public void mostrarSolicitudes() {
-		GSolicitudesReg.getGSolicitudReg().mostrarSolicitudes();
+	public ArrayList<String> mostrarSolicitudes() {
+		ArrayList<String> res=GSolicitudesReg.getGSolicitudReg().mostrarSolicitudes();
+		return res;
 	}
 	
 	public void aceptarSolicitudReg(String pMail) {
@@ -47,8 +49,9 @@ public class Videoclub extends Observable{
 	public void actualizarDatosUsurio(String pContraseña, String pNombre, String pApellido, String pMail, int pTelefono, Date pFechaNacimiento) {
 		GestorUsuarios.getGestorUsuarios().actualizarDatos(pContraseña,pNombre,pApellido,pMail,pTelefono,pFechaNacimiento);
 	}
-	public void mostrarPeliculas() {
-		GestorPeliculas.getGestorPeliculas().mostrarPeliculas();
+	public ArrayList<String> mostrarPeliculas() {
+		ArrayList<String> res=GestorPeliculas.getGestorPeliculas().mostrarPeliculas();
+		return res;
 	}
 	
 	public void alquilarPelicula(String pMail, String pTitulo) {
@@ -57,9 +60,9 @@ public class Videoclub extends Observable{
 		Usuario unUsuario= GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
 		GestorAlquileres.getGestorAlquileres().crearAlquiler(unUsuario,unaPelicula);
 	}
-	public void buscarPelicula(String pTitulo) {
-		GestorPeliculas.getGestorPeliculas().mostrarUnaPelicula(pTitulo);
-		
+	public String buscarPelicula(String pTitulo) {
+		String res=GestorPeliculas.getGestorPeliculas().mostrarUnaPelicula(pTitulo);
+		return res;
 	}
 	
 	public void resenarPelicula(String pMail,String pTitulo , String pComent , Double pPunt) {

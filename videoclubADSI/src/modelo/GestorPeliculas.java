@@ -30,15 +30,19 @@ public class GestorPeliculas {
 
 	
 
-	public void mostrarPeliculas() {
+	public ArrayList<String> mostrarPeliculas() {
 		Pelicula unaPeli = null;
 		Iterator<Pelicula> itr = getItr();
+		ArrayList<String> json=new ArrayList<String>();
+		String actual= null;
 		
 		while (itr.hasNext()) {
 			unaPeli = itr.next();
-			unaPeli.obtenerInfo();
+			actual=unaPeli.obtenerInfo();
+			json.add(actual);
 			
 		}
+		return json;
 		
 	}
 
@@ -61,8 +65,9 @@ public class GestorPeliculas {
 
 	
 
-	public void mostrarUnaPelicula(String pTitulo) {
+	public String mostrarUnaPelicula(String pTitulo) {
 		Pelicula unaPeli=obtenerPelicula(pTitulo);
-		unaPeli.obtenerInfo();
+		String res=unaPeli.obtenerInfo();
+		return res;
 	}
 }
