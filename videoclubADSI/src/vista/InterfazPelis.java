@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import modelo.Videoclub;
-import vista.InicioSesion.Controler;
+
 
 import javax.swing.JScrollPane;
 import java.awt.GridLayout;
@@ -40,6 +40,7 @@ public class InterfazPelis extends JFrame implements Observer{
 	private JButton btnAmpliado;
 	private JButton btnOrdenar;
 	private JButton btnDatosPersonales;
+	private String usuario;
 
 	/**
 	 * Launch the application.
@@ -64,6 +65,7 @@ public class InterfazPelis extends JFrame implements Observer{
 	 */
 	public InterfazPelis(Observable datos, String[] JSON, String pUsu ) {
 		datos.addObserver(this);
+		usuario = pUsu;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1370, 954);
 		contentPane = new JPanel();
@@ -103,11 +105,6 @@ public class InterfazPelis extends JFrame implements Observer{
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,}));
 		
-		JButton btnCerrarSesion = new JButton("Cerrar Sesion");
-		btnCerrarSesion.setBackground(new Color(0, 128, 192));
-		btnCerrarSesion.setForeground(new Color(255, 255, 255));
-		panel_2.add(btnCerrarSesion, "7, 1");
-		
 		JLabel lblNewLabel_1 = new JLabel("Buscar:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel_2.add(lblNewLabel_1, "1, 3, 3, 3, right, default");
@@ -115,33 +112,72 @@ public class InterfazPelis extends JFrame implements Observer{
 		textField = new JTextField();
 		panel_2.add(textField, "5, 3, 1, 4, fill, default");
 		textField.setColumns(10);
-		
-		JButton btnDatosPersonales = new JButton("Cambiar Datos Personaleses");
-		btnDatosPersonales.setBackground(new Color(0, 128, 192));
-		btnDatosPersonales.setForeground(new Color(255, 255, 255));
-		panel_2.add(btnDatosPersonales, "7, 3");
-		
-		JButton btnAmpliado = new JButton("Abrir Catalogo Ampliado");
-		btnAmpliado.setBackground(new Color(0, 128, 192));
-		btnAmpliado.setForeground(new Color(255, 255, 255));
-		panel_2.add(btnAmpliado, "7, 5");
-		
-		JButton btnOrdenar = new JButton("Ordenar Pelis");
-		btnOrdenar.setBackground(new Color(0, 128, 192));
-		btnOrdenar.setForeground(new Color(255, 255, 255));
-		panel_2.add(btnOrdenar, "7, 7");
-		
+		panel_2.add(getBtnCerrarSesion(), "7, 1");
+		panel_2.add(getBtnDatosPersonales(), "7, 3");
+		panel_2.add(getBtnAmpliado(), "7, 5");
+		panel_2.add(getBtnOrdenar(), "7, 7");
 		JList<String> list = new JList<>(JSON);
 		JScrollPane scrollPane = new JScrollPane(list);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
-		
-		
-		
+	
 	}
+		private JButton getBtnCerrarSesion() {
+			if (btnCerrarSesion == null) {
+				btnCerrarSesion = new JButton("Cerrar Sesion");
+				btnCerrarSesion.setBackground(new Color(0, 128, 192));
+				btnCerrarSesion.setForeground(new Color(255, 255, 255));
+				btnCerrarSesion.addActionListener(getControler());
+			}
+			return btnCerrarSesion;
+		}
+		
+		private JButton getBtnDatosPersonales() {
+			if(btnDatosPersonales == null) {
+			btnDatosPersonales = new JButton("Cambiar Datos Personaleses");
+			btnDatosPersonales.setBackground(new Color(0, 128, 192));
+			btnDatosPersonales.setForeground(new Color(255, 255, 255));
+			btnDatosPersonales.addActionListener(getControler());
+			}
+			return btnDatosPersonales;
+		}
+		
+		private JButton getBtnAmpliado() {
+			if(btnAmpliado == null) {
+				btnAmpliado = new JButton("Abrir Catalogo Ampliado");
+				btnAmpliado.setBackground(new Color(0, 128, 192));
+				btnAmpliado.setForeground(new Color(255, 255, 255));
+				btnAmpliado.addActionListener(getControler());
+			}
+			return btnAmpliado;
+		}
+		
+		private JButton getBtnOrdenar() {
+			if(btnOrdenar == null) {
+				btnOrdenar = new JButton("Ordenar Pelis");
+				btnOrdenar.setBackground(new Color(0, 128, 192));
+				btnOrdenar.setForeground(new Color(255, 255, 255));
+				btnOrdenar.addActionListener(getControler());
+			}
+			return btnOrdenar;
+		}
+		
+		
 
 	@Override
 	public void update(Observable o, Object arg) {
-		
+		if(arg instanceof String) { // datos personales
+			String datos = (String)arg;
+			
+			CambiarDatosUsu frame1 = new CambiarDatosUsu();
+			this.dispose();
+			frame1.setVisible(true);
+			}
+		else if(arg instanceof String[] ) {
+			
+		}
+		else {
+			
+		}
 		
 	}
 	private Controler getControler() {
@@ -153,8 +189,19 @@ public class InterfazPelis extends JFrame implements Observer{
 	private class Controler implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource().equals(btnIniciarSesion)){
-			Videoclub.getVideoclub().iniciarSesion(txtInserteMail.getText(), txtInserteContrasea.getText());
+			if (e.getSource().equals(btnCerrarSesion)){
+			Comienzo frame1 = new Comienzo();
+			InterfazPelis.this.dispose();
+			frame1.setVisible(true);
+			}
+			else if (e.getSource().equals(btnAmpliado)) {
+				
+			}
+			else if (e.getSource().equals(btnDatosPersonales)) {
+				Videoclub.getVideoclub().mostrarDatosUsuario(usuario);
+			}
+			else if (e.getSource().equals(btnOrdenar)) {
+				Videoclub.getVideoclub().obtenerPelisOrdenadasPorPunt();
 			}
 		}
 	}
