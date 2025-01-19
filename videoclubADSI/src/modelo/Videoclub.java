@@ -17,6 +17,8 @@ public class Videoclub extends Observable{
 		Usuario elUsuario= GestorUsuarios.getGestorUsuarios().iniciarSesion(pMail,pContraseña);
 		if (elUsuario == null) {
 			System.out.println("usuario no encontrado, introduce otra vez los datos, si no ha iniciado sesion, registrase");
+			setChanged();
+			notifyObservers(null);
 		}
 		else {
 			System.out.println("se ha iniciado sesion");

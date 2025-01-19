@@ -30,6 +30,7 @@ public class InicioSesion extends JFrame implements Observer{
 	private JTextField txtInserteMail;
 	private JTextField txtInserteContrasea;
 	private Controler controler = null;
+	private JButton btnIniciarSesion;
 
 	/**
 	 * Launch the application.
@@ -95,19 +96,27 @@ public class InicioSesion extends JFrame implements Observer{
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewLabel_1_1.setBounds(155, 84, 134, 14);
 		panel_1.add(lblNewLabel_1_1);
-		
-		JButton btnIniciarSesion = new JButton("Iniciar Sesion");
-		btnIniciarSesion.setForeground(new Color(255, 255, 255));
-		btnIniciarSesion.setBackground(new Color(0, 128, 192));
-		btnIniciarSesion.setFont(new Font("Tahoma", Font.BOLD, 15));
-		panel.add(btnIniciarSesion);
+		panel.add(getBtnIniciarSesion());
 	}
+		private JButton getBtnIniciarSesion() {
+			if (btnIniciarSesion == null) {
+				btnIniciarSesion = new JButton("Iniciar Sesion");
+				btnIniciarSesion.setForeground(new Color(255, 255, 255));
+				btnIniciarSesion.setBackground(new Color(0, 128, 192));
+				btnIniciarSesion.setFont(new Font("Tahoma", Font.BOLD, 15));
+				btnIniciarSesion.addActionListener(getControler());
+			
+			}
+			return btnIniciarSesion;
+		}
 	@Override
 	public void update(Observable o, Object arg) {
 		if (arg == null) {
-			//aqui abrir pestaña de no se pude iniciar sesion
+			MalInicioSesion frame = new MalInicioSesion();
+			this.dispose();
+			frame.setVisible(true);
 		}
-		else if(false){
+		else {
 			//aqui abrir pagina de inicio con la interfaz de pelis y posibilidad de ir a actualizar datos personales
 		}
 	}
@@ -122,8 +131,9 @@ public class InicioSesion extends JFrame implements Observer{
 	private class Controler implements ActionListener {
 	
 		public void actionPerformed(ActionEvent e) {
+			if (e.getSource().equals(btnIniciarSesion)){
 			Videoclub.getVideoclub().iniciarSesion(txtInserteMail.getText(), txtInserteContrasea.getText());
+			}
 		}
 	}
-
 }
