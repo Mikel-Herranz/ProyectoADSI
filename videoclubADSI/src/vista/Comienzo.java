@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.Videoclub;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -66,7 +69,7 @@ public class Comienzo extends JFrame {
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Comienzo.this.dispose();
-				InicioSesion frame = new InicioSesion();
+				InicioSesion frame = new InicioSesion(Videoclub.getVideoclub());
 				frame.setVisible(true);
 			}
 		});

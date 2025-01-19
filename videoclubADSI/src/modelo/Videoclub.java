@@ -1,8 +1,8 @@
 package modelo;
 
 import java.util.Date;
-
-public class Videoclub {
+import java.util.Observable;
+public class Videoclub extends Observable{
 
     private static Videoclub miVideoclub = new Videoclub();
     

@@ -21,8 +21,9 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
 import java.awt.Color;
-
-public class InicioSesion extends JFrame {
+import java.util.Observable;
+import java.util.Observer;
+public class InicioSesion extends JFrame implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -37,7 +38,7 @@ public class InicioSesion extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InicioSesion frame = new InicioSesion();
+					InicioSesion frame = new InicioSesion(Videoclub.getVideoclub());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +50,9 @@ public class InicioSesion extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public InicioSesion() {
+	public InicioSesion(Observable datos) {
+		
+		datos.addObserver(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 856, 416);
 		contentPane = new JPanel();
@@ -99,6 +102,16 @@ public class InicioSesion extends JFrame {
 		btnIniciarSesion.setFont(new Font("Tahoma", Font.BOLD, 15));
 		panel.add(btnIniciarSesion);
 	}
+	@Override
+	public void update(Observable o, Object arg) {
+		if (arg == null) {
+			//aqui abrir pestaña de no se pude iniciar sesion
+		}
+		else if(false){
+			//aqui abrir pagina de inicio con la interfaz de pelis y posibilidad de ir a actualizar datos personales
+		}
+	}
+	
 	private Controler getControler() {
 		if (controler == null) {
 			controler = new Controler();
