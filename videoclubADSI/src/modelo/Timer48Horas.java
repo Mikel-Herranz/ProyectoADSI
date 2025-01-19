@@ -19,9 +19,9 @@ public class Timer48Horas {
             while (remainingTime > 0) {
                 try {
                     // Mostrar el tiempo restante en formato horas:minutos:segundos
-                    System.out.println(formatTime(remainingTime));
+              //      System.out.println(formatTime(remainingTime));
                     // Pausar el hilo por 1 segundo
-                    Thread.sleep(1000);
+                   Thread.sleep(1000);
                     // Reducir el tiempo restante en 1 segundo
                     remainingTime -= 1000;
                 } catch (InterruptedException e) {

@@ -11,7 +11,7 @@ public class Incorporamiento{
     }
 
 	public String obtenerInfo() {
-		return quien.obtenerInfo() + que.obtenerInfo();
+		return quien.getMail() +" "+ que.obtenerInfo();
 	}
 
 	public Usuario getUsuario() {

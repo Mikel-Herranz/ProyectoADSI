@@ -143,7 +143,7 @@ public class InterfazPelis extends JFrame implements Observer{
 		
 		private JButton getBtnDatosPersonales() {
 			if(btnDatosPersonales == null) {
-			btnDatosPersonales = new JButton("Cambiar Datos Personaleses");
+			btnDatosPersonales = new JButton("Cambiar Datos Personales");
 			btnDatosPersonales.setBackground(new Color(0, 128, 192));
 			btnDatosPersonales.setForeground(new Color(255, 255, 255));
 			btnDatosPersonales.addActionListener(getControler());

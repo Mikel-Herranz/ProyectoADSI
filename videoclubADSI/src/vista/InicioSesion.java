@@ -116,6 +116,11 @@ public class InicioSesion extends JFrame implements Observer{
 			this.dispose();
 			frame.setVisible(true);
 		}
+		else if(arg instanceof Float) {
+			VistaAdmin frame = new VistaAdmin(Videoclub.getVideoclub());
+			this.dispose();
+			frame.setVisible(true);
+		}
 		else {
 			//aqui abrir pagina de inicio con la interfaz de pelis y posibilidad de ir a actualizar datos personales
 			this.dispose();

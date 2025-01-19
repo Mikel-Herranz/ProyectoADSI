@@ -35,12 +35,33 @@ public class GSolicitudesReg {
 		}
 		return json;
 	}
+	public void rechazarSolicitud(String pMail) {
+        SolicitudReg unaSolicitud = null;
+        Iterator<SolicitudReg> itr = getItr();
+        int pos=0;
+        boolean encontrada=false;
+        while (itr.hasNext() && !encontrada) {
+            unaSolicitud=itr.next();
+            encontrada=unaSolicitud.esEsta(pMail);
+            if  (encontrada==false) {
+                pos=pos++;
+            }
+        }
+        if (encontrada==false) {
+            System.out.println("error , solicitud no encontrada");
+        }
+        else {
+
+            lista.remove(pos);
+        }
+    } 
+
 	public void aceptarSolicitud(String pMail) {
 		SolicitudReg unaSolicitud = null;
 		Iterator<SolicitudReg> itr = getItr();
 		int pos=0;
 		boolean encontrada=false;
-		while (itr.hasNext() || encontrada) {
+		while (itr.hasNext() && !encontrada) {
 			unaSolicitud=itr.next();
 			encontrada=unaSolicitud.esEsta(pMail);
 			if  (encontrada==false) {

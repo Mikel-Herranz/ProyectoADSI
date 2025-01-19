@@ -23,7 +23,9 @@ public class Videoclub extends Observable{
 		}
 		else {
 			if (elUsuario.esAdmin()) {
-				
+				float o = 12.8f;
+				setChanged();
+				notifyObservers(o);
 			}
 			else{
 				System.out.println("se ha iniciado sesion");
@@ -51,11 +53,14 @@ public class Videoclub extends Observable{
 	
 	public String[] mostrarSolicitudes() {
 		String[] res=GSolicitudesReg.getGSolicitudReg().mostrarSolicitudes();
+		setChanged();
+		notifyObservers(res);
 		return res;
 	}
 	
 	public void aceptarSolicitudReg(String pMail) {
 		GSolicitudesReg.getGSolicitudReg().aceptarSolicitud(pMail);
+		mostrarSolicitudes();
 	}
 	
 	public void eliminarCuenta(String pMail) {
@@ -67,7 +72,10 @@ public class Videoclub extends Observable{
 		mostrarPeliculas();
 		
 	}
-	
+	public void rechazarSolicitudReg(String pMail) {
+        GSolicitudesReg.getGSolicitudReg().rechazarSolicitud(pMail);
+        mostrarSolicitudes();
+    }
 
 	public String[] mostrarPeliculas() {
 		String[] res=GestorPeliculas.getGestorPeliculas().mostrarPeliculas();
@@ -81,6 +89,9 @@ public class Videoclub extends Observable{
 		GestorUsuarios.getGestorUsuarios().alquilarPeliPara(pMail,unaPelicula);
 		Usuario unUsuario= GestorUsuarios.getGestorUsuarios().buscarUsuarioPorMail(pMail);
 		GestorAlquileres.getGestorAlquileres().crearAlquiler(unUsuario,unaPelicula);
+		char a = 'q';
+		setChanged();
+		notifyObservers(a);
 	}
 	public String buscarPelicula(String pTitulo) {
 		String res=GestorPeliculas.getGestorPeliculas().mostrarUnaPelicula(pTitulo);
@@ -96,8 +107,9 @@ public class Videoclub extends Observable{
 			GestorUsuarios.getGestorUsuarios().resenarPeliPara(pMail,unaPelicula);
 			GestorResenas.getGestorResenas().crearResena(unUsuario,unaPelicula,pComent,pPunt);
 			GestorResenas.getGestorResenas().actaulizarPuntPromedio(unaPelicula);
-			
 		}
+		System.out.println("reseñada");
+		mostrarPeliculas();
 		
 	}
 	public double verPuntPromedio(String pTitulo) {

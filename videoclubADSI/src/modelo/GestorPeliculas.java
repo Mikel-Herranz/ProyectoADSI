@@ -52,7 +52,7 @@ public class GestorPeliculas {
 		Iterator<Pelicula> itr = getItr();
 		boolean encontrado = false;
 		
-		while (itr.hasNext() || encontrado) {
+		while (itr.hasNext() && !encontrado) {
 			unaPeli = itr.next();
 			encontrado=unaPeli.esEsta(pTitulo);
 			

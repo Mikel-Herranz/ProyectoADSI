@@ -12,8 +12,10 @@ public class GestorUsuarios {
     private GestorUsuarios() {
         this.lista = new ArrayList<Usuario>();
         Usuario admin =new Usuario("123", "administrador", "admin", "admin", 0,  new Date(98, 1, 23));
+        Usuario manu =new Usuario("123", "jose", "manu", "manu@gmail.com", 500,  new Date(98, 1, 23));
         admin.hacerAdmin();
         this.lista.add(admin);
+        this.lista.add(manu);
     }
 
     public static GestorUsuarios getGestorUsuarios() {

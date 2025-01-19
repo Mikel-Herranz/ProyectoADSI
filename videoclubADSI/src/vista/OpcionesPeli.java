@@ -103,6 +103,10 @@ public class OpcionesPeli extends JFrame implements Observer{
 		JLabel lblNewLabel_3 = new JLabel("Desc: " + desc);
 		lblNewLabel_3.setBounds(57, 318, 264, 138);
 		panel_1.add(lblNewLabel_3);
+		String puntPro =String.valueOf(Videoclub.getVideoclub().verPuntPromedio(titulo));
+		JLabel lblNewLabel_4 = new JLabel("punt Promedio: " + puntPro);
+		lblNewLabel_4.setBounds(57, 453, 181, 14);
+		panel_1.add(lblNewLabel_4);
 		
 		
 		panel.add(getBtnAlq());
@@ -136,9 +140,17 @@ public class OpcionesPeli extends JFrame implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		this.dispose();
-		InterfazPelis frame2 = new InterfazPelis(Videoclub.getVideoclub(), (String[])arg, usuario);
-		frame2.setVisible(true);
+		if (arg instanceof Character){
+			this.dispose();
+			AlqBien frame = new AlqBien(Videoclub.getVideoclub(), usuario);
+			frame.setVisible(true);
+		}
+		else{
+			this.dispose();
+			InterfazPelis frame2 = new InterfazPelis(Videoclub.getVideoclub(), (String[])arg, usuario);
+			frame2.setVisible(true);
+		}
+		
 		
 	}
 	private Controler getControler() {
@@ -158,7 +170,9 @@ public class OpcionesPeli extends JFrame implements Observer{
 				Videoclub.getVideoclub().alquilarPelicula(usuario, titulo);
 			}
 			else if(e.getSource().equals(btnReseñar)){
-				
+				Reseñar frame = new Reseñar(Videoclub.getVideoclub(),titulo, usuario);
+				OpcionesPeli.this.dispose();
+				frame.setVisible(true);
 			}
 		}
 	}

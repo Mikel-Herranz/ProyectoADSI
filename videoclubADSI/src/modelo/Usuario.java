@@ -97,7 +97,7 @@ public class Usuario {
 	public String obtenerInfo() {
 		return "Email: " + mail +","+"Nombre: " + nombre +","+"Apellido: " + apellido;
 	}
-
+	
 	public String obtenerDatos() {
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		String fechaFormateada = formato.format(fechaNacimiento);
